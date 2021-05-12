@@ -28,6 +28,7 @@ public class Cuenta {
   public void poner(double saldoADepositar) {
     Validaciones.esMontoValido(saldoADepositar);
     Validaciones.validarLimiteDeDepositos(this);
+    this.saldo += saldoADepositar;
     agregarMovimiento(new Movimiento(LocalDate.now(), saldoADepositar, true));
   }
 
@@ -35,6 +36,7 @@ public class Cuenta {
     Validaciones.esMontoValido(saldoAExtraer);
     Validaciones.validarSaldoSuficiente(saldoAExtraer, this);
     Validaciones.validarLimiteExtracción(saldoAExtraer, this);
+    this.saldo -= saldoAExtraer;
     agregarMovimiento(new Movimiento(LocalDate.now(), saldoAExtraer, false));
   }
 
